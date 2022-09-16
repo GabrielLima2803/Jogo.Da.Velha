@@ -1,9 +1,17 @@
 
+let numerador = Number(prompt("Informe quantas partidas você vai querer"));
+
 let jogador = "X";
 let resultado = "";
 
+let vitoria = "";
+
 let vit_O = 0;
 let vit_X = 0;
+
+let partida_continua = true;
+
+let contador = 0
 
 let casa01 = document.getElementById("casa01");
 let casa02 = document.getElementById("casa02");
@@ -19,7 +27,7 @@ let btnJogar = document.getElementById("jogar");
 let btnResultado = document.getElementById("resultado")
 let btnTeste = document.getElementById("teste")
 function jogada(casa) {
-    if (casa.innerHTML === ""){
+    if (casa.innerHTML === "" && partida_continua){
         casa.innerHTML = jogador;
         alterna_jogador();
 
@@ -34,6 +42,7 @@ function alterna_jogador() {
         jogador = "X";
     }
 }
+
 function verifica_ganhador() {
     if (casa01.innerHTML!="" && casa01.innerHTML===casa02.innerHTML && casa01.innerHTML=== casa03.innerHTML){
         resultado = `Temos um Ganhador ${casa01.innerHTML}`
@@ -103,6 +112,7 @@ function verifica_ganhador() {
 }
 
 function placar(ganhador) {
+    partida_continua = false;
     if (ganhador === "X"){
         vit_X = vit_X + 1;
     }else{
@@ -113,20 +123,28 @@ function placar(ganhador) {
 }
 
 function reinicia() {
-    btnJogar.style.display = "none";
-    btnResultado.style.display = "none";
-    btnTeste.style.display = "none";
-    resultado = "";
 
-    jogador = "X";
-    casa01.innerHTML="";
-    casa02.innerHTML="";
-    casa03.innerHTML="";
-    casa04.innerHTML="";
-    casa05.innerHTML="";
-    casa06.innerHTML="";
-    casa07.innerHTML="";
-    casa08.innerHTML="";
-    casa09.innerHTML="";
+    if (vit_X+ vit_O < numerador) {
+
+        partida_continua = true;
+        
+    
+        btnJogar.style.display = "none";
+        btnResultado.style.display = "none";
+        btnTeste.style.display = "none";
+        resultado = "";
+    
+        jogador = "X";
+        casa01.innerHTML="";
+        casa02.innerHTML="";
+        casa03.innerHTML="";
+        casa04.innerHTML="";
+        casa05.innerHTML="";
+        casa06.innerHTML="";
+        casa07.innerHTML="";
+        casa08.innerHTML="";
+        casa09.innerHTML="";
+    }
+
     
 }

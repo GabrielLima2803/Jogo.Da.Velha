@@ -31,6 +31,10 @@ body{
     display: none;
    
 }
+#jogar:hover{
+    background-color:  rgb(0, 0, 0);
+    transition: 0.9s;
+}
 #placar{
     background-color: aliceblue;
     border: none;
